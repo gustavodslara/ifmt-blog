@@ -1,4 +1,4 @@
-package br.gus.proj.blog.ifmt.ifmtblog;
+package br.gus.blog.ifmt.ifmtblog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
