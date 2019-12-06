@@ -16,7 +16,7 @@ public class PostController {
                        @RequestParam(name = "title", required = false, defaultValue = "") String title,
                        @RequestParam(name = "content", required = false, defaultValue = "") String content) {
         if (user != null && user.equals("root") && pwd != null && pwd.equals("root")) {
-            Post post = new Post(title, content);
+            Post post = new Post(null,title, content);
             if (post != null && post.getTitle() != null && post.getContent() != null) {
                 CreateNode c = new CreateNode();
                 c.createPost(post);

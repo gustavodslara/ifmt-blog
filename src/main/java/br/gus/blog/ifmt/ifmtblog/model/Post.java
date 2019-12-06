@@ -10,7 +10,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Post implements Serializable {
-
+    @Getter
+    @Setter
+    private Long id;
     @Getter
     @Setter
     private String title;

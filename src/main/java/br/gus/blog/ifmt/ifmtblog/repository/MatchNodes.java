@@ -11,11 +11,12 @@ import java.util.List;
 public class MatchNodes {
     public List<Post> getPosts() {
         Session session = GraphCon.getSession();
-        StatementResult result = session.run("MATCH (n:Post) RETURN n.title AS title, n.content as content");
+        StatementResult result = session.run("MATCH (n:Post) RETURN ID(n) as id, n.title as title, n.content as content");
         List<Post> listaPosts = new ArrayList<>();
         while (result.hasNext()) {
             Record record = result.next();
             Post p = new Post();
+            p.setId(record.get("id").asLong());
             p.setTitle(record.get("title").asString());
             p.setContent(record.get("content").asString());
             listaPosts.add(p);
