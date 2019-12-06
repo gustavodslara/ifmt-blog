@@ -21,7 +21,7 @@ public class PostController {
                 CreateNode c = new CreateNode();
                 c.createPost(post);
             }
-            return "index";
+           return "redirect:/";
         } else {
             return "error";
         }
