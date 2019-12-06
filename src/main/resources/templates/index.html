@@ -56,6 +56,7 @@
         <br>
         <div class="card" th:each="post: ${listaPosts}">
             <div class=" card-body">
+                <span>Teste</span>
                 <h5 class="card-title" th:text="${post.title}"></h5>
                 <p class="card-text" th:text="${post.content}"></p>
             </div>

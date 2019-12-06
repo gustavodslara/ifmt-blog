@@ -18,6 +18,7 @@ public class MatchNodes {
             Post p = new Post();
             p.setTitle(record.get("title").asString());
             p.setContent(record.get("content").asString());
+            listaPosts.add(p);
         }
         session.close();
         return listaPosts;
