@@ -8,6 +8,6 @@ public class CreatePostController {
 
     @GetMapping("/criarpost")
     public String createPost() {
-       return "criarpost";
+        return "createpost";
     }
 }

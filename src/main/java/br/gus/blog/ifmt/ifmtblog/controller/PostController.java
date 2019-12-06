@@ -12,10 +12,9 @@ public class PostController {
 
     @GetMapping("/postar")
     public String post(@RequestParam(name = "user", required = false, defaultValue = "") String user,
-                           @RequestParam(name = "pwd", required = false, defaultValue = "") String pwd,
-                           @RequestParam(name = "title", required = false, defaultValue = "") String title,
-                           @RequestParam(name = "content", required = false, defaultValue = "") String content,
-                           Model model) {
+                       @RequestParam(name = "pwd", required = false, defaultValue = "") String pwd,
+                       @RequestParam(name = "title", required = false, defaultValue = "") String title,
+                       @RequestParam(name = "content", required = false, defaultValue = "") String content) {
         if (user != null && user.equals("root") && pwd != null && pwd.equals("root")) {
             Post post = new Post(title, content);
             if (post != null && post.getTitle() != null && post.getContent() != null) {
