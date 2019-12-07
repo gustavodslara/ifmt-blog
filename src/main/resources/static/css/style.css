@@ -19,7 +19,8 @@ form {
 }
 
 footer{
+    background-image: linear-gradient(white, rgb(209, 209, 209));
     bottom: 0;
     position: absolute;
-    background-color: #0e0e0e;
+    width: 100%;
 }
