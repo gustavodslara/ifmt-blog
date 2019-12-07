@@ -12,8 +12,13 @@ form {
 }
 
 .card-body p {
-    max-width: 35%;
+    max-width: 90%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+footer{
+    bottom: 0;
+    position: absolute;
 }

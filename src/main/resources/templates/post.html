@@ -44,12 +44,13 @@
     </div>
     <br>
     <div class="container">
-        <div class="d-flex justify-content-center">
-            <h1 class="display-3">Bem Vindo</h1>
-            <h1 class="display-4 small">Portal do DAP</h1>
-        </div><br>
+        <br>
         <div class="container">
-            <h4>Publicações</h4>
+            <h3 th:text="${post.title}"></h3>
+            <br>
+            <div class="container" style="max-width: 90%;">
+                <p th:text="${post.content}"></p>
+            </div>
         </div>
         <br>
         <div class="container" th:each="post: ${listaPosts}">
