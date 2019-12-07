@@ -19,8 +19,8 @@ form {
 }
 
 footer{
+    margin-top: 80px;
     background-image: linear-gradient(white, rgb(209, 209, 209));
     bottom: 0;
     position: absolute;
-    width: 100%;
 }
