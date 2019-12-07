@@ -20,7 +20,12 @@ form {
 
 footer{
     margin-top: 80px;
-    background-image: linear-gradient(white, rgb(209, 209, 209));
-    bottom: 0;
+    height: 30vh;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-image: linear-gradient(white, rgb(202, 202, 202));
     position: absolute;
+    bottom: 0;
+    width: 100%;
 }
