@@ -17,14 +17,3 @@ form {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-footer{
-    margin-top: 80px;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    background-image: linear-gradient(white, rgb(202, 202, 202));
-    bottom: 0;
-    width: 100%;
-    position: absolute;
-}
