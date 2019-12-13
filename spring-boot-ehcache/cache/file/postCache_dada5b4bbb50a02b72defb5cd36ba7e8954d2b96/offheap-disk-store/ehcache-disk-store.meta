@@ -1,0 +1,4 @@
+#Key and value types
+#Fri Dec 13 15:27:59 AMST 2019
+keyType=java.lang.Object
+valueType=movies.spring.data.neo4j.domain.Post

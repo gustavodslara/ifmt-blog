@@ -1,0 +1,19 @@
+form {
+    width: 100%;
+}
+
+#nav {
+    background-color: rgb(200, 200, 200);
+}
+
+.card-body {
+    text-align: left;
+    width: 75%;
+}
+
+.card-body p {
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
