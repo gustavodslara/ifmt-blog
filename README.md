@@ -25,6 +25,7 @@ Sistema de Blog com GrapheneDB, Spring, Thymeleaf, Bootstrap 4 e jQuery
 
 >Todas as dependências foram selecionadas a partir do [Spring Initializr](https://start.spring.io/)
 
+```xml
 <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -87,6 +88,7 @@ Sistema de Blog com GrapheneDB, Spring, Thymeleaf, Bootstrap 4 e jQuery
             <version>3.7.1</version>
         </dependency>
     </dependencies>
+```
 
 ### Estrutura do projeto
 
@@ -182,7 +184,7 @@ Para evitar isso, utilizei EhCache, para criar um cache tanto de todos os posts 
 >Isso também implica nos novos posts, então ao criar um novo post, somente quando o cache acabar, que ele será exibido na página inicial.
 
 __XML configuração do EhCache__
-
+```xml
 <cache-template name="default">
         <expiry>
             <ttl unit="seconds">120</ttl>
@@ -199,5 +201,5 @@ __XML configuração do EhCache__
     <cache alias="postCache" uses-template="default">
         <value-type>br.gus.ifmt.blog.domain.Post</value-type>
     </cache>
+```
 
-    
