@@ -204,3 +204,22 @@ __XML configuração do EhCache__
     </cache>
 ```
 
+## Imagens
+
+No momento de fazer uma nova publicação, usando javascript, a imagem selecionada é convertida em base64, e gravada dessa forma no banco.
+
+Na hora de exibir, se houver imagem, o src da tag <img> é trocado pelo base64 que veio do banco, o html suporta e gera a imagem automáticamente
+
+```javascript
+function readFile() {
+    if (this.files && this.files[0]) {
+        var FR = new FileReader();
+        FR.addEventListener("load", function (e) {
+            document.getElementById("imgPreview").src = e.target.result;
+            document.getElementById("imgBase64").value = e.target.result;
+        });
+        FR.readAsDataURL(this.files[0]);
+    }
+}
+document.getElementById("inputImg").addEventListener("change", readFile);
+```
