@@ -1,0 +1,11 @@
+body{
+    background-color: red;
+}
+
+form {
+    width: 100%;
+}
+
+#nav {
+    background-color: rgb(240, 240, 240);
+}
