@@ -1,6 +1,6 @@
-package movies.spring.data.neo4j.repositories;
+package br.gus.ifmt.blog.repositories;
 
-import movies.spring.data.neo4j.domain.Post;
+import br.gus.ifmt.blog.domain.Post;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

@@ -1,7 +1,5 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -20,11 +18,13 @@
             <br>
             <div class="row">
                 <div class="col-6">
-                    <img class="img-fluid" height="170" width="200" style="min-height: 100!important; min-width: 130!important;"
+                    <img class="img-fluid" height="170" width="200" alt="ifmtLogo"
+                        style="min-height: 100!important; min-width: 130!important;"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Instituto_Federal_de_Mato_Grosso_-_Marca_Vertical_2015.svg/1200px-Instituto_Federal_de_Mato_Grosso_-_Marca_Vertical_2015.svg.png">
                 </div>
-                <div class="col-6"> <img class="img-fluid" src="https://1.bp.blogspot.com/-1QsfPzurKrs/XcZGWFueeXI/AAAAAAAAbdk/6tEc7hysXNgKx0U1HNbnROGg_AnW7QgqQCLcBGAsYHQ/s320/ifmtG.png"
-                    alt="dap"></div>
+                <div class="col-6"> <img class="img-fluid"
+                        src="https://1.bp.blogspot.com/-1QsfPzurKrs/XcZGWFueeXI/AAAAAAAAbdk/6tEc7hysXNgKx0U1HNbnROGg_AnW7QgqQCLcBGAsYHQ/s320/ifmtG.png"
+                        alt="dap"></div>
             </div>
         </div>
         <br>
@@ -39,7 +39,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-item active nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="/criarpost">Novo</a>
+                        <a class="nav-item nav-link" href="/postar">Novo</a>
                     </div>
                 </div>
             </nav>
@@ -56,23 +56,26 @@
         </div>
         <br>
         <div class="container" th:each="post: ${listaPosts}">
-            <div class="card">
-                <form action="/visualizar" method="GET">
-                    <div class=" card-body">
-                        <h5 class="card-title" th:text="${post.title}"></h5>
-                        <p class="card-text" th:text="${post.content}"></p>
+            <form action="/visualizar" method="GET">
+                <div class="card">
+                    <div class="card-body">
+                        <img id="imgIcon" class="rounded img-fluid" style="max-height: 250px; float: left;"
+                            th:src="${post.img != null} ? ${post.img} : ''" alt="">
+                        <h5 style="margin: 4px; padding: 4px;" class="card-title" th:text="${post.title}"></h5>
+                        <p style="margin: 4px; padding: 4px;" class="card-text" th:text="${post.content}"></p>
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-right">
-                            <input type="text" name="title" th:value="${post.title}" hidden>
+                            <input type="number" name="id" th:value="${post.id}" hidden>
                             <input type="submit" class="btn btn-primary" value="Visualizar">
                         </div>
                     </div>
-                </form>
-            </div>
-            <br>
+                </div>
+                <br>
+            </form>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -83,4 +86,5 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

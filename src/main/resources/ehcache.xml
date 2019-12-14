@@ -21,6 +21,6 @@
         <value-type>java.util.List</value-type>
     </cache>
     <cache alias="postCache" uses-template="default">
-        <value-type>movies.spring.data.neo4j.domain.Post</value-type>
+        <value-type>br.gus.ifmt.blog.domain.Post</value-type>
     </cache>
 </config>

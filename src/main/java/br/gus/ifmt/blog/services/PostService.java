@@ -1,12 +1,14 @@
-package movies.spring.data.neo4j.services;
+package br.gus.ifmt.blog.services;
 
-import movies.spring.data.neo4j.domain.Post;
-import movies.spring.data.neo4j.repositories.PostRepository;
+import br.gus.ifmt.blog.domain.Post;
+import br.gus.ifmt.blog.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -16,8 +18,8 @@ public class PostService {
 
     @Cacheable("postCache")
     @Transactional(readOnly = true)
-    public Post findByTitle(String title) {
-        return postRepository.findByTitle(title);
+    public Optional<Post> findById(Long id) {
+        return postRepository.findById(id);
     }
 
     @Transactional(readOnly = true)
@@ -31,5 +33,8 @@ public class PostService {
         return postRepository.findAll();
     }
 
-
+    @Transactional
+    public void save(Post newPost) {
+        postRepository.save(newPost);
+    }
 }
