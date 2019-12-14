@@ -1,11 +1,32 @@
-body{
-    background-color: red;
-}
-
 form {
     width: 100%;
 }
 
 #nav {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(200, 200, 200);
 }
+
+.card-body #imgCon{
+    margin: 2px;
+    padding: 2px;
+}
+
+.card-body p {
+    padding: 4px;
+    margin: 5em;
+    display: block;
+    text-align: left;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 150px;
+  line-height: 1.8em;
+  max-width: 90%;
+}
+
+.card-body h5{
+    padding: 5em;
+    margin: 5em;
+    text-align: left;
+}
+

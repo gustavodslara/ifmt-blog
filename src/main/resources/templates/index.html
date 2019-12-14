@@ -61,8 +61,8 @@
                     <div class="card-body">
                         <img id="imgIcon" class="rounded img-fluid" style="max-height: 250px; float: left;"
                             th:src="${post.img != null} ? ${post.img} : ''" alt="">
-                        <h5 style="margin: 4px; padding: 4px;" class="card-title" th:text="${post.title}"></h5>
-                        <p style="margin: 4px; padding: 4px;" class="card-text" th:text="${post.content}"></p>
+                        <h5 class="card-title" th:text="${post.title}"></h5>
+                        <p class="card-text" th:text="${post.content}"></p>
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-right">
