@@ -1,4 +1,4 @@
-package movies.spring.data.neo4j.domain;
+package br.gus.ifmt.blog.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,5 +19,6 @@ public class Post implements Serializable {
     private String title;
     @Getter @Setter
     private String content;
-
+    @Getter @Setter
+    private String img;
 }
