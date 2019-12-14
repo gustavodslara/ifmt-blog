@@ -1,121 +1,203 @@
-Movies Example Application
+ifmt-blog
 ==========================
 
-How to use Spring Boot, Spring Data, and Neo4j together.
+## Este é o trabalho do Projeto Integrador do 4º Semestre do curso superior de Sistemas para Internet, IFMT 2019
 
-Spring Data Neo4j enables convenient integration of Neo4j in your Spring-based application.
-It provides object-graph mapping (OGM) functionality and other features common to the Spring Data projects.
+Sistema de Blog com GrapheneDB, Spring, Thymeleaf, Bootstrap 4 e jQuery
+
+![tecnologias](/ghimgs/tecnologias.png)
+
+1. **GrapheneDB**
+    * É um serviço de hospedagem de Neo4j, neste caso está sendo usando como um add-on no Heroku
+        * Neo4j é um sgbd de banco de dados orientado a grafos (GraphQL)
+2. **Spring**
+    * É um framework open source para a Java não intrusivo, baseado nos padrões de projeto inversão de controle e injeção de dependência.
+3. **Thymeleaft**
+    * O Thymeleaf é um mecanismo de modelo Java XML / XHTML / HTML5 que pode funcionar em ambientes web e não web.
+4. **Bootstrap**
+    * É um framework web com código-fonte aberto para desenvolvimento de componentes de interface e front-end para sites e aplicações web usando HTML, CSS e JavaScript, baseado em modelos de design para a tipografia, melhorando a experiência do usuário em um site amigável e responsivo.
+5. **jQuery**
+    * É uma biblioteca de funções JavaScript que interage com o HTML, desenvolvida para simplificar os scripts interpretados no navegador do cliente.
+
+## Dependências
+
+![maven](/ghimgs/maven.png)
+
+>Todas as dependências foram selecionadas a partir do [Spring Initializr](https://start.spring.io/)
+
+<dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-neo4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j</artifactId>
+            <version>3.4.9</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-embedded-driver</artifactId>
+            <version>${neo4j-ogm.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-bolt-driver</artifactId>
+            <version>${neo4j-ogm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>3.7.1</version>
+        </dependency>
+    </dependencies>
+
+### Estrutura do projeto
+
+O Spring usa a Inversão de Controle ou Injeção de dependências, e também usao Factory Design Pattern para criação dos objetos dos beans e o MVC na web
+
+![estrutura](/ghimgs/strut.png)
+
+> A estrutura ficou assim, lembrando que não há implementação correta do security por conta do prazo, também DTOs e a separação entre o core e o rest.
+
+## O projeto
+
+Temos o POJO Post, que é a nossa postagem do blog, nela contém seu título, conteúdo e imagem opcional.
 
 [NOTE]
-*This project uses Spring Data Neo4j 5.*
-It is optimized for working with Neo4j Desktop and based on Neo4j's query language, Cypher.
+*O projeto usa Spring Data Neo4j.*
+Logo, o repositório extende da classe Neo4jRepository que por sua vez em algum momento extende da classe CrudRepository do Spring Data, que já traz consigo implementado diversos métodos de crud.
 
-The example project is described in detail on the https://neo4j.com/developer/example-project/[Neo4j Developer Site]
+O serviço traz consigo o repositório de posts para que então o controlador disponibiliza os endpoints, utilizando o serviço para trazer os dados do banco
 
-== Quickstart
+#### Autenticação
 
-. http://neo4j.com/download[Download, install, and start Neo4j Desktop].
-. From here, there are two ways you can access the end points.
-    1) Open the browser web interface at http://localhost:7474
-        a. Configure a username and password, if you haven't already.
-    2) In Neo4j Desktop, click on your project, click on 'Manage' on the database you are using, click 'Open Browser'.
-        a. Should not need to log in. Password was set up when you set up the database.
-. Run `:play movies` command, and click and run the Cypher statement to insert the dataset
-. Clone this project from GitHub
-. Update `src/main/resources/application.properties` with the username and password you set above.
-. Run the project with `mvn spring-boot:run`.
+Como dito antes, só deu tempo de fazer algo básico do basico
+>Literalmente
+Foi utilizada a Basic Auth e não há usuário e senha no banco, estão fixos no código
 
-== Code Walkthrough
+Então, através de jQuery AJAX, geramos um base64 a partir do usuário inserido **+** a separação ":" e a senha inserida
 
-To use Neo4j with Spring Data Neo4j, you just add the dependency for https://projects.spring.io/spring-boot/[Spring-Boot] and https://projects.spring.io/spring-data-neo4j/[Spring-Data-Neo4j] to your build setup.
+Por fim, é enviado "Basic " **+** o base64 gerado para o servidor no cabeçalho da requisição "Authorization", e lá antes de criar uma nova postagem, validamos se o login é válido
 
-.pom.xml
-[source,xml]
-----
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-neo4j</artifactId>
-</dependency>
-----
-include::pom.xml[tags=dependencies]
+**Cliente**
+```javascript
+        $(document).ready(function () {
+            $("#formPost").submit(function (e) {
+                e.preventDefault();
+                var json = ConvertFormToJSON("#formPost");
+                var user = $("input#user").val();
+                var pwd = $("input#pwd").val();
+                function basic_auth(user, pwd) {
+                    var token = user + ':' + pwd;
+                    var hash = btoa(token);
+                    return "Basic " + hash;
+                }
+                $.ajax({
+                    url: '/postar/inserir',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': basic_auth(user, pwd)
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify(json),
+                    success: window.location.href = "/"
+                });
+            });
 
-Annotate your `@NodeEntity` and `@RelationshipEntity`. You can use the OGM `Session` to access Neo4j APIs and object graph mapping functionality.
+            function ConvertFormToJSON(form) {
+                var array = jQuery(form).serializeArray();
+                var json = {};
+                jQuery.each(array, function () {
+                    json[this.name] = this.value || '';
+                });
+                return json;
+            }
+        });
+```
 
-.Movie.java
-[source,java]
-----
-@NodeEntity
-public class Movie {
+**Servidor**
+```java
+public class Login {
+    public static final String USER = "adminifmt123";
+    public static final String PASS = "adminifmt123";
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    private Login() {}
 
-    private String title;
+    public static boolean isAuth(@NotNull String basicAuth) {
+        return basicAuth.equals(authStatic());
+    }
 
-    private int released;
-
-    private String tagline;
-
-    @Relationship(type = "ACTED_IN", direction = Relationship.INCOMING)
-    private List<Role> roles;
+    public static String authStatic(){
+        String token = USER + ":" + PASS;
+        return "Basic " + new String(Base64.getEncoder().encode(token.getBytes()));
+    }
 }
-----
-include::src/main/java/movies/spring/data/neo4j/domain/Movie.java[tags=movie]
+```
 
-Additionally, you can leverage the convenient Spring-Data repositories to get interface-based DAO implementations injected into your Spring Components.
+##Desempenho
 
-.MovieRepository.java
-[source,java]
-----
-public interface MovieRepository extends Neo4jRepository<Movie, Long> {
+Ao utilizar o GrapheneDB e a hospedagem a aplicação no Heroku, ambos gratuitos, o desempenho consegue ser bem ruim, principalmente no momento de retornar para a página inicial, onde todos os posts são carregados
 
-    Movie findByTitle(@Param("title") String title);
+Para evitar isso, utilizei EhCache, para criar um cache tanto de todos os posts na página inicial, como de cada post especifíco que o usuário desejar visualizar
+>O cache dura 2 minutos, então é um tempo para o usuário navegar, ler um post, retornar para a página principal com **0** lentidão.
+>Após esse tempo, a página irá buscar no banco novamente.
+>Isso também implica nos novos posts, então ao criar um novo post, somente quando o cache acabar, que ele será exibido na página inicial.
 
-    Collection<Movie> findByTitleLike(@Param("title") String title);
+__XML configuração do EhCache__
 
-    @Query("MATCH (m:Movie)<-[r:ACTED_IN]-(a:Person) RETURN m,r,a LIMIT {limit}")
-    Collection<Movie> graph(@Param("limit") int limit);
-}
-----
-include::src/main/java/movies/spring/data/neo4j/repositories/MovieRepository.java[tags=repository]
+<cache-template name="default">
+        <expiry>
+            <ttl unit="seconds">120</ttl>
+        </expiry>
+        <resources>
+            <heap>1000</heap>
+            <offheap unit="MB">10</offheap>
+            <disk persistent="true" unit="MB">20</disk>
+        </resources>
+    </cache-template>
+    <cache alias="postsCache" uses-template="default">
+        <value-type>java.util.List</value-type>
+    </cache>
+    <cache alias="postCache" uses-template="default">
+        <value-type>br.gus.ifmt.blog.domain.Post</value-type>
+    </cache>
 
-In our case, we use the repository from a `MovieService` to compute the graph representation for the visualization.
-The service is then injected into our main Boot application, which also doubles as `@RestMvcController` which exposes the `/graph` endpoint.
-
-The other two endpoints for finding multiple movies by title and loading a single movie are provided out of the box by the https://projects.spring.io/spring-data-rest/[Spring-Data-Rest project], which exposes our `MovieRepository` as REST endpoints.
-
-The rendering of the movie objects (and related entities) happens automatically via Jackson mapping.
-
-== The Stack
-
-These are the components of our Web Application:
-
-* Application Type:         Spring-Boot Java Web Application (Jetty)
-* Web framework:            Spring-Boot enabled Spring-WebMVC, Spring-Data-Rest
-* Persistence Access:       Spring-Data-Neo4j 5.0.5
-* Database:                 Neo4j-Server 3.3.x
-* Frontend:                 jquery, bootstrap, http://d3js.org/[d3.js]
-
-== Endpoints:
-
-Get Movie
-
-To run our setup queries through our REST endpoints:
-
-From the Neo4j Desktop main console, go to 'Manage' on your database, then choose the 'Terminal' tab. You can copy/paste the commands below into that terminal and should see results.
-
-You can also go to http://localhost:8080 to interact with the data.
-
-Now feel free to add other queries to your application to see more data and relationships!
-
-----
-// JSON object for single movie with cast
-curl http://localhost:8080/movies?title=The%20Matrix
-
-// list of JSON objects for movie search results
-curl http://localhost:8080/movies?title=*matrix*
-
-// JSON object for whole graph viz (nodes, links - arrays)
-curl http://localhost:8080/graph
-----
+    
