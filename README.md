@@ -102,17 +102,18 @@ O Spring usa a Inversão de Controle ou Injeção de dependências, e também us
 
 Temos o POJO Post, que é a nossa postagem do blog, nela contém seu título, conteúdo e imagem opcional.
 
-[NOTE]
-*O projeto usa Spring Data Neo4j.*
+>*O projeto usa Spring Data Neo4j.*
+
 Logo, o repositório extende da classe Neo4jRepository que por sua vez em algum momento extende da classe CrudRepository do Spring Data, que já traz consigo implementado diversos métodos de crud.
 
 O serviço traz consigo o repositório de posts para que então o controlador disponibiliza os endpoints, utilizando o serviço para trazer os dados do banco
 
-#### Autenticação
+## Autenticação
 
 Como dito antes, só deu tempo de fazer algo básico do basico
 >Literalmente
-Foi utilizada a Basic Auth e não há usuário e senha no banco, estão fixos no código
+
+>Foi utilizada a Basic Auth e não há usuário e senha no banco, estão fixos no código
 
 Então, através de jQuery AJAX, geramos um base64 a partir do usuário inserido **+** a separação ":" e a senha inserida
 
@@ -174,7 +175,7 @@ public class Login {
 }
 ```
 
-##Desempenho
+## Desempenho
 
 Ao utilizar o GrapheneDB e a hospedagem a aplicação no Heroku, ambos gratuitos, o desempenho consegue ser bem ruim, principalmente no momento de retornar para a página inicial, onde todos os posts são carregados
 
