@@ -7,11 +7,11 @@ form {
 }
 
 .card-body .card-title{
-  text-align: center;
+  text-align: center!important;
 }
 
 .card-body p {
-  padding: 4px;
+  padding: 4px!important;
   display: block;
   text-align: left;
   text-overflow: ellipsis;
