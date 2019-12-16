@@ -6,7 +6,12 @@ form {
     background-color: rgb(200, 200, 200);
 }
 
+.card-body .card-title{
+  text-align: center;
+}
+
 .card-body p {
+  padding: 4px;
   display: block;
   text-align: left;
   text-overflow: ellipsis;
