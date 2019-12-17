@@ -29,7 +29,7 @@
                         'Content-Type': 'application/json',
                         'Authorization': basic_auth(user, pwd)
                     },
-                    type: 'POST',
+                    type: 'PUT',
                     dataType: 'json',
                     data: JSON.stringify(json),
                     success: window.location.href = "/"
@@ -96,20 +96,21 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <img class="rounded img-fluid" alt="" src="" id="imgPreview" style="max-height:150px;">
+            <img class="rounded img-fluid" alt="" th:src="${post.img}" id="imgPreview" style="max-height:150px;">
         </div>
         <br>
         <div class="d-flex justify-content-center">
             <form id="formPost">
+                <input type="number" name="id" th:value="${post.id}" hidden>
                 <div class="form-group">
                     <label for="inputTitle">Título</label>
-                    <input type="text" name="title" class="form-control" id="inputTitle">
+                    <input th:text="${post.title}" type="text" name="title" class="form-control" id="inputTitle">
                 </div>
                 <div class="form-group">
                     <label for="inputContent">Conteúdo</label>
-                    <textarea id="inputContent" class="form-control" name="content" rows="6"></textarea>
+                    <textarea th:text="${post.content}" id="inputContent" class="form-control" name="content" rows="6"></textarea>
                     <br>
-                    <input hidden type="text" name="img" id="imgBase64" />
+                    <input th:text="${post.img}" hidden type="text" name="img" id="imgBase64" />
                     <input class="btn btn-primary" type="submit" value="Postar" />
                 </div>
             </form>
