@@ -37,9 +37,4 @@ public class PostService {
     public void save(Post newPost) {
         postRepository.save(newPost);
     }
-
-    @Transactional
-    public void deletePostById(Long id) {
-        postRepository.deleteById(id);
-    }
 }

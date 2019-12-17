@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.gus.ifmt.blog</groupId>
-    <artifactId>ifmt-blog</artifactId>
+    <groupId>com.neo4j.examples</groupId>
+    <artifactId>sdn5-movies</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>IFMT Blog</name>
-    <description>Blog para o IFMT com Spring Boot</description>
+    <name>SDN5 Movies</name>
+    <description>Demo web project for Spring Data using Spring Boot and Neo4j</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -83,15 +83,6 @@
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
             <version>3.7.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

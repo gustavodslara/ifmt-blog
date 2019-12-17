@@ -37,14 +37,4 @@ public class PostController {
         return "createpost";
     }
 
-    @GetMapping("/editar")
-    public String editar() {
-        return "editpost";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
 }
