@@ -18,7 +18,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/visualizar").permitAll()
+                .antMatchers("/", "/css/**", "/js/**", "/visualizar").permitAll()
                 .antMatchers("/postar/**", "/editar").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
@@ -35,7 +35,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.inMemoryAuthentication()
-                .withUser("adminifmt2019").password("adminifmt2019").roles("ADMIN");
+                .withUser("adminifmt2019").password("{noop}adminifmt2019").roles("ADMIN");
     }
 
     /*
