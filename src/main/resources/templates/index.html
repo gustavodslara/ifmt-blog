@@ -68,11 +68,7 @@
                         <div class="d-flex justify-content-right">
                             <input type="number" name="id" th:value="${post.id}" hidden>
                             <input type="submit" class="btn btn-primary" value="Visualizar">
-                        </form>
-                        <form sec:authorize="isAuthenticated()" action="/editar" method="GET">
-                            <input type="number" name="id" th:value="${post.id}" hidden>
-                            <input type="submit" class="btn btn-warning" value="Editar">
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <br>
