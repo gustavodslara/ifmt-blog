@@ -22,6 +22,12 @@ public class PostController {
         return "index";
     }
 
+    @GetMapping("/home")
+    public String otherHome(Model model) {
+        model.addAttribute("listaPosts", postService.findAll());
+        return "index";
+    }
+
     @GetMapping("/visualizar")
     public String viewPost(@RequestParam("id") Long id, Model model) {
         Optional<Post> post = postService.findById(id);
@@ -35,6 +41,18 @@ public class PostController {
     @GetMapping("/postar")
     public String postar() {
         return "createpost";
+    }
+
+    @GetMapping("/editar")
+    public String editar(@RequestParam("id") Long id, Model model) {
+        Optional<Post> post = postService.findById(id);
+        model.addAttribute("post", post.isPresent() ? post.get() : "");
+        return "editpost";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
 }
