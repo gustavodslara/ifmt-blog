@@ -1,0 +1,4 @@
+#Key and value types
+#Tue Dec 17 18:45:23 AMST 2019
+keyType=java.lang.Object
+valueType=br.gus.ifmt.blog.domain.Post

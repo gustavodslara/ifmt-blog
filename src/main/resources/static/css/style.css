@@ -1,0 +1,25 @@
+form {
+    width: 100%;
+}
+
+#nav {
+    background-color: rgb(200, 200, 200);
+}
+
+.card-body .card-title{
+  text-align: center!important;
+}
+
+.card-body p {
+  padding: 4px!important;
+  display: block;
+  text-align: left;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 150px;
+  line-height: 1.8em;
+  max-width: 90%;
+}
+
+
