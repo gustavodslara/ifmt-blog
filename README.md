@@ -1,6 +1,8 @@
 ifmt-blog
 ==========================
 
+[![Quality Gate Status](http://localhost:32768/api/project_badges/measure?project=ifmt-blog&metric=alert_status)](http://localhost:32768/dashboard?id=ifmt-blog)
+
 ## Este é o trabalho do Projeto Integrador do 4º Semestre do curso superior de Sistemas para Internet, IFMT 2019
 
 Sistema de Blog com GrapheneDB, Spring, Thymeleaf, Bootstrap 4 e jQuery
