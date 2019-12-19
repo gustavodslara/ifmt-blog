@@ -12,12 +12,12 @@ Sistema de Blog com GrapheneDB, Spring, Thymeleaf, Bootstrap 4 e jQuery
 
 ## Dependências
 
-![maven](/ghimgs/maven.png)
-
 >Todas as dependências foram selecionadas a partir do [Spring Initializr](https://start.spring.io/)
 
+Maven
+
 ```xml
-	<dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
