@@ -1,10 +1,10 @@
 ifmt-blog
 ==========================
 
-[![Quality Gate Status](http://a666e71a.ngrok.io/api/project_badges/measure?project=ifmt-blog&metric=alert_status)](http://a666e71a.ngrok.io/dashboard?id=ifmt-blog)
-[![Reliability Rating](http://a666e71a.ngrok.io/api/project_badges/measure?project=ifmt-blog&metric=reliability_rating)](http://a666e71a.ngrok.io/dashboard?id=ifmt-blog)
-[![Security Rating](http://a666e71a.ngrok.io/api/project_badges/measure?project=ifmt-blog&metric=security_rating)](http://a666e71a.ngrok.io/dashboard?id=ifmt-blog)
-[![Maintainability Rating](http://a666e71a.ngrok.io/api/project_badges/measure?project=ifmt-blog&metric=sqale_rating)](http://a666e71a.ngrok.io/dashboard?id=ifmt-blog)
+[![Quality Gate Status](http://a666e71a.ngrok.io/api/project_badges/measure?project=ifmt-blog&metric=alert_status)](http://2051e15c.ngrok.io/dashboard?id=ifmt-blog)
+[![Reliability Rating](http://a666e71a.ngrok.io/api/project_badges/measure?project=ifmt-blog&metric=reliability_rating)](http://2051e15c.ngrok.io/dashboard?id=ifmt-blog)
+[![Security Rating](http://a666e71a.ngrok.io/api/project_badges/measure?project=ifmt-blog&metric=security_rating)](http://2051e15c.ngrok.io/dashboard?id=ifmt-blog)
+[![Maintainability Rating](http://a666e71a.ngrok.io/api/project_badges/measure?project=ifmt-blog&metric=sqale_rating)](http://2051e15c.ngrok.io/dashboard?id=ifmt-blog)
 
 ## Este é o trabalho do Projeto Integrador do 4º Semestre do curso superior de Sistemas para Internet, IFMT 2019
 
